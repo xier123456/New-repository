@@ -15,6 +15,7 @@ import Tip from "../page/Tip.jsx";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Technology from "../page/Technology.jsx";
+import NotePageWithComments from "../Redux/NotePage-003.jsx";
 
 const LayoutWithNavbar = () => (
   <>
@@ -43,6 +44,7 @@ function AppRouter() {
         {/* 不导航栏的 */}
         <Route element={<PlainLayout />}>
           <Route path="/login" element={<Login />} />
+          <Route path="/NotePage/:id" element={<NotePageWithComments />} />
         </Route>
       </Routes>
       

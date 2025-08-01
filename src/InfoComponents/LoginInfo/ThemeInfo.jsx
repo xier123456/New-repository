@@ -7,9 +7,10 @@ import { Children } from "react";
 
 function ThemeInfo({children}) {
   const [IsLogin, setIsLogin] = useState(false);
+  const {articleCardID,setArticleCardID}=useState(1)
 
   return (
-    <AuthContext.Provider value={{ IsLogin, setIsLogin }}>
+    <AuthContext.Provider value={{ IsLogin, setIsLogin, articleCardID,setArticleCardID }}>
       {children}
     </AuthContext.Provider>
   );

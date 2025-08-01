@@ -25,8 +25,32 @@ const Header = () => {
 
   const [finalFontStyle, setFinalFontStyle] = useState(true);
 
-  window.addEventListener("scroll", () => {
+const throttle =(func,limit)=> {
+  let lastFunc
+  let lastRan
+  return function(){
+    const context=this
+    const args=arguments
+    if(!lastRan){
+      func.apply(context,args)
+      lastRan=Date.now()
+    }else{
+      clearTimeout(lastFunc)
+      lastFunc=setTimeout(() => {
+        if(Date.now()-lastRan>=limit){
+          func.apply(context,args)
+          lastRan=Date.now()
+        }
+        
+      }, limit-(Date.now()-lastRan));
+    }
+  }
+}
+
+useEffect(()=>{
+  const handleScroll=()=>{
     const windowscroll = window.scrollY;
+
     if (windowscroll > lastScrollY && windowscroll > 150) {
       setFinalFontStyle(false);
       setHeaderClearicons(false)
@@ -35,12 +59,35 @@ const Header = () => {
       setFinalFontStyle(true);
       setHeaderClearicons(true)
     }
-  })
+    lastScrollY.current=windowscroll<=0?0:windowscroll
+  }
+  const throttledHandleScroll=throttle(handleScroll,100)
+
+  window.addEventListener('scroll',throttledHandleScroll)
+
+  return()=>{
+    window.removeEventListener('scroll',throttledHandleScroll)
+  }
+
+  
+},[])
+
+  // window.addEventListener("scroll", () => {
+  //   const windowscroll = window.scrollY;
+  //   if (windowscroll > lastScrollY && windowscroll > 150) {
+  //     setFinalFontStyle(false);
+  //     setHeaderClearicons(false)
+      
+  //   } else {
+  //     setFinalFontStyle(true);
+  //     setHeaderClearicons(true)
+  //   }
+  // })
 
   const FontStyleA =
-    "text-[14px] btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
+    "text-[17px] btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
   const FontStyleB =
-    "text-[12px]  btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
+    "text-[16px]  btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
 
   useEffect(() => {
     // if (juLogin.get("setRLogin") === "true") {
@@ -122,10 +169,11 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className={finalFontStyle?"menu menu-horizontal px-1 text-blank bg-white/0  rounded-lg "
             :"menu menu-horizontal px-1 bg-white/80 text-blank rounded-lg shadow-2xl"}>
-            <li>
+            <li className="ml-2">
               <Link to="/" className={finalFontStyle ? FontStyleA : FontStyleB}>
-                {HeaderClearicons?<FaHome />:''}
-                首页
+                <FaHome />
+                {HeaderClearicons?'首页':''}
+                
               </Link>
             </li>
             <li>
@@ -133,17 +181,19 @@ const Header = () => {
                 to="/article"
                 className={finalFontStyle ? FontStyleA : FontStyleB}
               >
-                {HeaderClearicons?<MdArticle />:''}
+                <MdArticle />
+                {HeaderClearicons?'技术笔记':''}
                 
-                技术笔记
+                
               </Link>
             </li>
             <li>
               <details>
                 <summary className={finalFontStyle ? FontStyleA : FontStyleB}>
-                  {HeaderClearicons?<FaFeather />:''}
+                  <FaFeather />
+                  {HeaderClearicons?'友链':''}
                   
-                  友链
+                 
                 </summary>
                 <ul className="p-1">
                   <li>
@@ -151,9 +201,10 @@ const Header = () => {
                       to="/tip"
                       className="btn btn-dash btn-info p-4 m-1 ml-2 hover:text-white transition-all duration-700 ease-in-out"
                     >
-                      {HeaderClearicons?<RiMoneyCnyBoxFill />:''}
+                      <RiMoneyCnyBoxFill />
+                      {HeaderClearicons?'打赏':''}
                       
-                      打赏
+                      
                     </Link>
                   </li>
                   <li>
@@ -161,9 +212,10 @@ const Header = () => {
                       to="/friend"
                       className="btn btn-dash btn-info m-1 p-4 ml-2 hover:text-white transition-all duration-700 ease-in-out"
                     >
-                      {HeaderClearicons?<FaUserFriends />:''}
+                      <FaUserFriends />
+                      {HeaderClearicons?'好友':''}
                       
-                      好友
+                      
                     </Link>
                   </li>
                 </ul>
@@ -174,9 +226,10 @@ const Header = () => {
                 to="/Miscellaneous"
                 className={finalFontStyle ? FontStyleA : FontStyleB}
               >
-                {HeaderClearicons?<RiMessage3Fill />:''}
+                <RiMessage3Fill />
+                {HeaderClearicons?'说说':''}
                 
-                说说
+                
               </Link>
             </li>
             <li>
@@ -184,9 +237,10 @@ const Header = () => {
                 to="/Technology"
                 className={finalFontStyle ? FontStyleA : FontStyleB}
               >
-                {HeaderClearicons?<GrTechnology />:''}
+                <GrTechnology />
+                {HeaderClearicons?'个人发展图':''}
                 
-                个人发展图
+                
               </Link>
             </li>
             <li>
@@ -194,9 +248,10 @@ const Header = () => {
                 to="/about"
                 className={finalFontStyle ? FontStyleA : FontStyleB}
               >
-                {HeaderClearicons?<IoHelpCircleSharp />:''}
+                <IoHelpCircleSharp />
+                {HeaderClearicons?'关于':''}
                 
-                关于
+                
               </Link>
             </li>
           </ul>

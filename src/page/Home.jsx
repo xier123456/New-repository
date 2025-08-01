@@ -24,10 +24,9 @@ const Home = () => {
                 Provident cupiditate voluptatem et in. Quaerat fugiat
               </p>
               <div className="flex gap-10 justify-center">
-                <VscGithub  className="btn bg-black border-0  text-white border-black p-0 p-2  mt-2" />
-                <FaBilibili className="btn bg-pink-400 border-0 text-white border-black p-0 p-2  mt-2" />
-               <FaTiktok className="btn bg-black border-0 text-white border-black p-0 p-2  mt-2" />
-              </div>
+                <div className="mt-2 bg-blue-500 p-3 btn text-white border-white">查看笔记</div>
+                <VscGithub  className="btn bg-black border-0 text-white  border-black p-0 p-2  mt-2" />
+                </div>
               
             </div>
           </div>
