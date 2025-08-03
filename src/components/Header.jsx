@@ -20,7 +20,7 @@ const Header = () => {
   const [LoginStart, setLoginStart] = useState(false);
   const navbarRef = useRef(null);
   const[HeaderClearicons,setHeaderClearicons]=useState(true)
-  let lastScrollY = 0;
+ const lastScrollY = useRef(0);
   const{IsLogin,setIsLogin}=useContext(AuthContext)
 
   const [finalFontStyle, setFinalFontStyle] = useState(true);
@@ -85,9 +85,9 @@ useEffect(()=>{
   // })
 
   const FontStyleA =
-    "text-[17px] btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
+    "text-[17px] z-10 btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
   const FontStyleB =
-    "text-[16px]  btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
+    "text-[16px]  z-10 btn p-4 btn-ghost btn-info mr-4 hover:text-white transition-all duration-500 ease-in-out";
 
   useEffect(() => {
     // if (juLogin.get("setRLogin") === "true") {
@@ -138,7 +138,7 @@ useEffect(()=>{
                 <Link to="/">首页</Link>
               </li>
               <li>
-                <Link to="/article">技术笔记</Link>
+                <Link to="/article">学习笔记</Link>
               </li>
               <li>
                 <a>友链</a>
@@ -182,7 +182,7 @@ useEffect(()=>{
                 className={finalFontStyle ? FontStyleA : FontStyleB}
               >
                 <MdArticle />
-                {HeaderClearicons?'技术笔记':''}
+                {HeaderClearicons?'学习笔记':''}
                 
                 
               </Link>

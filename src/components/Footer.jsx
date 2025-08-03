@@ -12,7 +12,7 @@ const Footer = () => {
     <Link className="link link-hover" to='/about'>关于我</Link>
     <Link className="link link-hover" to='/Article'>笔记</Link>
     <Link className="link link-hover" to='/friend'>好友</Link>
-    <Link className="link link-hover" to='/tip'>说说</Link>
+    <Link className="link link-hover" to='/Miscellaneous'>说说</Link>
     <Link className="link link-hover" to='/Technology'>发展图</Link>
   </nav>
   <nav>

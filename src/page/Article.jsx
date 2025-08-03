@@ -30,7 +30,12 @@ const navigate= useNavigate()
     
     <div className="pt-30 min-h-screen bg-gradient-to-br from-blue-50 to-white p-6 "
     >
-      <h1 className="m-5 text-5xl font-bold text-center ">技术笔记</h1>
+         <div className="text-center mb-12">
+        <h1 className="text-[clamp(1.8rem,4vw,2.5rem)] font-light text-gray-700 tracking-wide">
+          学习笔记
+        </h1>
+        <div className="w-24 h-1 bg-blue-400 mx-auto mt-4 rounded-full opacity-70"></div>
+      </div>
       {articles.map((article) => (
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 w-[55vw] m-auto p-4"  key={article.id}  onClick={()=>handleCard(article.id)}>
          
@@ -51,7 +56,7 @@ const navigate= useNavigate()
         {/* 元数据区 - 淡蓝分隔，标签用主色浅变体 */}
         <div className="flex justify-between items-center text-xs sm:text-sm pt-3 border-t border-[#EFF6FF]">
           <span className="text-[#94A3B8]">{article.date}</span>
-          <span className="bg-[#EFF6FF] text-[#2563EB] px-2.5 py-0.5 rounded-full">技术笔记</span>
+          <span className="bg-[#EFF6FF] text-[#2563EB] px-2.5 py-0.5 rounded-full">学习笔记</span>
         </div>
       </div>
     </div>

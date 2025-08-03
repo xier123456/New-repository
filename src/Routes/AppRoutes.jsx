@@ -18,6 +18,7 @@ import Technology from "../page/Technology.jsx";
 import NotePageWithComments from "../Redux/NotePage-003.jsx";
 
 const LayoutWithNavbar = () => (
+ 
   <>
     <Header />
     <Outlet /> {/* 这里渲染子路由 */}
@@ -25,13 +26,22 @@ const LayoutWithNavbar = () => (
   </>
 );
 
+const FooterOnly=()=>(
+
+  <>
+    <Outlet />
+    <Footer/>
+  </>
+  )
+
+
 const PlainLayout = () => <Outlet />;
 
 function AppRouter() {
   return (
     <Router>
       <Routes>
-        {/* 导航栏的 */}
+        {/* 啥都有的 */}
         <Route element={<LayoutWithNavbar />}>
           <Route path="/" element={<Home />} />
           <Route path="/article" element={<Article />} />
@@ -41,10 +51,13 @@ function AppRouter() {
           <Route path="/tip" element={<Tip />} /> 
           <Route path="/Technology" element={<Technology/>} /> 
         </Route>
-        {/* 不导航栏的 */}
+        {/* 只有页脚的 */}
+        <Route element={<FooterOnly />}>
+          <Route path="/NotePage/:id" element={<NotePageWithComments />} />
+        </Route>
+        {/* 啥都没有的 */}
         <Route element={<PlainLayout />}>
           <Route path="/login" element={<Login />} />
-          <Route path="/NotePage/:id" element={<NotePageWithComments />} />
         </Route>
       </Routes>
       

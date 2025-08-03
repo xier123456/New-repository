@@ -3,6 +3,7 @@ import up from "../assets/up.jpg";
 import { FaBilibili } from "react-icons/fa6";
 import { VscGithub } from "react-icons/vsc";
 import { FaTiktok } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 
@@ -24,7 +25,10 @@ const Home = () => {
                 Provident cupiditate voluptatem et in. Quaerat fugiat
               </p>
               <div className="flex gap-10 justify-center">
+                <Link to='/article'>
                 <div className="mt-2 bg-blue-500 p-3 btn text-white border-white">查看笔记</div>
+                </Link>
+                
                 <VscGithub  className="btn bg-black border-0 text-white  border-black p-0 p-2  mt-2" />
                 </div>
               

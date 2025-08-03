@@ -1,25 +1,19 @@
-
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-
-
-
 
 const NotePageWithComments = () => {
   const currentArticle = useSelector((state) => state.articleCard.notesCard);
   //  const res=useSelector(state=>state.articleCard)
   // const[articles]=useState(res.notesCard)
-  const{id}= useParams()
-  const currentNote=currentArticle.find(node=>node.id.toString()===id)
-
-  
+  const { id } = useParams();
+  const currentNote = currentArticle.find((node) => node.id.toString() === id);
 
   return (
     <div className="min-h-screen bg-[#FAFAFA] font-sans">
-      {/* 顶部导航栏 */}
+
       <header className="sticky top-0 z-10 bg-white border-b border-[#EDEFF2] shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          {/* 左侧返回按钮 */}
+
           <Link
             to="/article"
             className="flex items-center text-[#8A94A6] hover:text-[#4A6FA5] transition-colors"
@@ -40,7 +34,7 @@ const NotePageWithComments = () => {
             <span>返回列表</span>
           </Link>
 
-          {/* 右侧操作区 */}
+ 
           <div className="flex items-center gap-3">
             <button className="text-[#8A94A6] hover:text-[#4A6FA5] transition-colors">
               <svg
@@ -67,18 +61,17 @@ const NotePageWithComments = () => {
         </div>
       </header>
 
-      {/* 主体内容区 */}
-      <main className="container mx-auto px-4 sm:px-6 py-8 max-w-3xl">
-        {/* 面包屑导航 */}
 
-        {/* 笔记标题区 */}
+      <main className="container mx-auto px-4 sm:px-6 py-8 max-w-3xl">
+    
+
+    
         <div className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-[#2D3748] mb-4 leading-tight">
-         {currentNote.title}
-            {/* React */}
+            {currentNote.title}
           </h1>
 
-          {/* 元数据 */}
+      
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#8A94A6]">
             <span className="flex items-center gap-1.5">
               <svg
@@ -94,7 +87,7 @@ const NotePageWithComments = () => {
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              发布于 2023-06-15
+              发布于{currentNote.date}
             </span>
             <span className="flex items-center gap-1.5">
               <svg
@@ -118,7 +111,7 @@ const NotePageWithComments = () => {
           </div>
         </div>
 
-        {/* 笔记正文区 */}
+    
         <div className="prose max-w-none text-[#4A5568] mb-12">
           <div className="bg-[#F5F7FA] border border-[#EDEFF2] rounded-lg p-5 mb-6">
             <p className="italic text-[#6B7A90] mb-0">
@@ -183,12 +176,12 @@ const NotePageWithComments = () => {
         </div>
 
         {/* 评论区 */}
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <h3 className="text-2xl font-bold text-[#2D3748] mb-6 pb-2 border-b border-[#EDEFF2]">
             评论 (3)
           </h3>
 
-          {/* 评论输入框 */}
+        
           <div className="bg-white rounded-xl border border-[#EDEFF2] p-4 mb-8">
             <textarea
               className="w-full border border-[#D9E2EC] rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#94B3DB] focus:border-transparent resize-none transition-all h-24 text-sm"
@@ -201,16 +194,16 @@ const NotePageWithComments = () => {
             </div>
           </div>
 
-          {/* 评论列表 */}
+        
           <div className="space-y-6">
-            {/* 评论1 */}
+        
             <div className="bg-white rounded-xl border border-[#EDEFF2] p-5">
               <div className="flex items-start gap-3 mb-3">
-                {/* 头像 */}
+               
                 <div className="w-10 h-10 rounded-full bg-[#E9EEF6] flex items-center justify-center text-[#4A6FA5] font-medium">
                   张
                 </div>
-                {/* 评论信息 */}
+                
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-medium text-[#2D3748]">张三</span>
@@ -221,7 +214,7 @@ const NotePageWithComments = () => {
                   </p>
                 </div>
               </div>
-              {/* 评论操作 */}
+          
               <div className="flex items-center gap-4 ml-13 text-xs text-[#8A94A6]">
                 <button className="hover:text-[#4A6FA5] transition-colors flex items-center gap-1">
                   <svg
@@ -260,7 +253,7 @@ const NotePageWithComments = () => {
               </div>
             </div>
 
-            {/* 评论2 */}
+        
             <div className="bg-white rounded-xl border border-[#EDEFF2] p-5">
               <div className="flex items-start gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full bg-[#E9EEF6] flex items-center justify-center text-[#4A6FA5] font-medium">
@@ -313,7 +306,7 @@ const NotePageWithComments = () => {
                 </button>
               </div>
 
-              {/* 嵌套回复 */}
+            
               <div className="mt-4 ml-10 pl-4 border-l-2 border-[#EDEFF2]">
                 <div className="flex items-start gap-3 mb-3">
                   <div className="w-8 h-8 rounded-full bg-[#E9EEF6] flex items-center justify-center text-[#4A6FA5] font-medium text-xs">
@@ -336,18 +329,18 @@ const NotePageWithComments = () => {
             </div>
           </div>
 
-          {/* 加载更多 */}
+    
           <div className="mt-6 text-center">
             <button className="text-[#4A6FA5] hover:text-[#3A5A8C] text-sm font-medium transition-colors">
               加载更多评论
             </button>
           </div>
-        </div>
+        </div> */}
 
-        {/* 底部标签区 */}
+   
       </main>
 
-      {/* 页脚 */}
+
     </div>
   );
 };
