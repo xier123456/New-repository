@@ -7,20 +7,27 @@ import { AuthContext } from "../InfoComponents/LoginInfo/Context";
 const Login = () => {
   const [activeTab, setActiveTab] = useState("login");
   const [userLogin, setUserLogin] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
   const { setIsLogin } = useContext(AuthContext)
 
   const handleLongin = async () => {
-    
+    if(!username==='haobai'&&!password===123456){
+      alert('密码不能为空')
+      return 
+    }
     setUserLogin(true);
     setIsLogin(true);
-    await new Promise((resolve) =>
+     await new Promise((resolve) =>
       setTimeout(() => {
         return resolve();
       }, 2000)
     )
     navigate("/");
+    
+   
   }
 
   return (
@@ -71,6 +78,7 @@ const Login = () => {
                   <input
                     type="text"
                     placeholder="用户名"
+                    onChange={e=>setUsername(e.target.value)}
                     className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white/70 focus:border-teal-400 focus:ring-1 focus:ring-teal-200 outline-none transition-all"
                   />
                   <div className="absolute right-3 top-3 text-gray-400">
@@ -94,6 +102,7 @@ const Login = () => {
                   <input
                     type="password"
                     placeholder="密码"
+                    onChange={e=>setPassword(e.target.value)}
                     className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white/70 focus:border-teal-400 focus:ring-1 focus:ring-teal-200 outline-none transition-all"
                   />
                   <div className="absolute right-3 top-3 text-gray-400">

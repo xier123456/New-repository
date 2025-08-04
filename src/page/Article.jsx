@@ -50,7 +50,7 @@ const navigate= useNavigate()
         
         {/* 摘要 - 浅蓝灰，保持柔和对比 */}
         <p className="text-[#64748B] mb-5 line-clamp-2 sm:line-clamp-3 text-sm sm:text-base leading-relaxed font-sans">
-          本文介绍了在React项s目开发中提升应用性能的实用方法，包括组件懒加载、虚拟列表实现以及状态管理优化等技巧，适合中高级开发者参考...
+        {article.text1}
         </p>
         
         {/* 元数据区 - 淡蓝分隔，标签用主色浅变体 */}
