@@ -87,7 +87,7 @@ const NotePageWithComments = () => {
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              发布于{currentNote.date}
+              发布于{currentNote.dateStart}
             </span>
             <span className="flex items-center gap-1.5">
               <svg
@@ -103,7 +103,7 @@ const NotePageWithComments = () => {
                   d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              最后编辑：2023-07-02
+              最后编辑：{currentNote.dateEnd}
             </span>
             <span className="bg-[#E9EEF6] text-[#4A6FA5] px-2.5 py-0.5 rounded-full text-xs">
               React
@@ -115,63 +115,46 @@ const NotePageWithComments = () => {
         <div className="prose max-w-none text-[#4A5568] mb-12">
           <div className="bg-[#F5F7FA] border border-[#EDEFF2] rounded-lg p-5 mb-6">
             <p className="italic text-[#6B7A90] mb-0">
-              本文整理了React项目中常见的性能瓶颈及优化方案，适合有一定React基础的开发者参考。
+              整理了一些React的笔记，用来查阅参考。
             </p>
           </div>
 
           <p className="mb-6 text-base leading-relaxed">
-            在React开发中，随着应用规模的扩大，性能问题往往会逐渐暴露。这些问题可能表现为页面加载缓慢、交互卡顿或滚动不流畅等。本文将从三个核心维度分享可落地的优化技巧。
+            {currentNote.excerpt}
           </p>
 
           <h2 className="text-2xl font-semibold text-[#2D3748] mt-10 mb-4">
-            1. 组件渲染优化
+           {currentNote.contentTitle}
           </h2>
           <p className="mb-4">
-            组件的不必要重渲染是最常见的性能问题之一。解决这一问题的核心是减少渲染次数，可通过以下方式实现：
+           {currentNote.text1}
           </p>
           <ul className="list-disc pl-5 mb-6 space-y-2">
             <li>
-              使用
-              <code className="bg-[#E9EEF6] text-[#4A6FA5] px-1 py-0.5 rounded">
-                React.memo
-              </code>
-              包裹纯展示组件，避免父组件更新时的连带重渲染
+              <img
+              src={currentNote.picture}/>
             </li>
             <li>
-              配合
-              <code className="bg-[#E9EEF6] text-[#4A6FA5] px-1 py-0.5 rounded">
-                useCallback
-              </code>
-              缓存事件处理函数，
-              <code className="bg-[#E9EEF6] text-[#4A6FA5] px-1 py-0.5 rounded">
-                useMemo
-              </code>
-              缓存计算结果
+              {currentNote.BasicUsage}
             </li>
-            <li>拆分大型组件为更小的功能单元，降低渲染粒度</li>
           </ul>
           <div className="border-t border-[#EDEFF2] pt-6">
-            <div className="flex flex-wrap items-center gap-2">
+            
+   <div className="flex flex-wrap items-center gap-2">
+             
               <span className="text-sm text-[#8A94A6]">标签：</span>
+             {currentNote.tags.map(tag=>(
               <a
                 href="#"
                 className="text-sm bg-[#E9EEF6] text-[#4A6FA5] px-3 py-1 rounded-full hover:bg-[#D9E2EC] transition-colors"
               >
-                前端开发
+                {tag}
               </a>
-              <a
-                href="#"
-                className="text-sm bg-[#E9EEF6] text-[#4A6FA5] px-3 py-1 rounded-full hover:bg-[#D9E2EC] transition-colors"
-              >
-                性能优化
-              </a>
-              <a
-                href="#"
-                className="text-sm bg-[#E9EEF6] text-[#4A6FA5] px-3 py-1 rounded-full hover:bg-[#D9E2EC] transition-colors"
-              >
-                React
-              </a>
+              ))}
+             
             </div>
+            
+            
           </div>
         </div>
 

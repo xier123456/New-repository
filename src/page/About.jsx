@@ -44,16 +44,15 @@ const About = () => {
           </div>
           
           <div className="px-8 md:px-10 pb-8 md:pb-10 border-t border-gray-50">
-            <h4 className="text-lg font-medium text-gray-800 mb-4 flex items-center">
-              <i className="fa fa-user-circle text-blue-400 mr-2"></i>
-              <p className="text-blue-500 mb-4">个人简介</p>
-              
-            </h4>
+             <div className=" mb-12">
+        <h1 className="text-[clamp(1.3rem,2vw,1.5rem)] font-light text-gray-700 tracking-wide">
+         个人简介
+        </h1>
+        <div className="w-24 h-1 bg-blue-400  mt-4 rounded-full opacity-70"></div>
+      </div>
             
             <div className="space-y-4 text-gray-700 leading-relaxed ml-10">
-                <p>
-                大学民办本科，没什么特长了，哈哈。
-              </p>
+             
               <p>
                 热爱前端开发的大学牲，没什么兴趣爱好，和普通人一样，喜欢打游戏...还有写react，我喜欢react。
               </p>
